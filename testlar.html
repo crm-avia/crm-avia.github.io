@@ -1,0 +1,8 @@
+<!doctype html><html lang="uz"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><body><main id="app"></main><script src="app.js"></script><script>
+shell();const r=DB.get('res',{}),l=sorted(),done=l.filter(x=>r[x.id]),pc=l.length?Math.round(done.length/l.length*100):0;
+const avg=done.length?Math.round(done.reduce((a,x)=>a+r[x.id].s/r[x.id].n,0)/done.length*100):0;
+$('#app').innerHTML=`<h1>${S('tests')}</h1><p class=intro>${tt(U("Har bir dars oxiridagi test natijalari va umumiy progressingiz shu yerda ko'rinadi.|Здесь результаты тестов после каждого урока и ваш общий прогресс.|Results of each lesson test and your overall progress appear here."))}</p>
+<div class=stats><div><b>${pc}%</b>${S('prog')}</div><div><b>${done.length}/${l.length}</b>${S('done')}</div><div><b>${avg}%</b>${S('avg')}</div></div><div class=prog style="margin:18px 0"><i style="width:${pc}%"></i></div>
+<div class=grid>${l.map(x=>{const q=r[x.id];return '<a class=card href=darslar.html#'+x.id+'><h3>'+e(tt(x.t))+'</h3><span class=muted>'+LV[x.lv][LI]+'</span><p>'+(q?'<span class='+(q.s/q.n>=.6?'ok':'bad')+'>'+q.s+'/'+q.n+' · '+q.d+'</span>':S('notdone'))+'</p></a>'}).join('')}</div><p><button class=ghost id=rs>${S('reset')}</button></p>`;
+$('#rs').onclick=()=>confirm(S('sure'))&&(DB.set('res',{}),location.reload());
+</script></body></html>

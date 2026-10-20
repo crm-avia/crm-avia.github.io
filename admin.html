@@ -1,0 +1,4 @@
+<!doctype html><html lang="uz"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><body><main id="app"></main><script src="app.js"></script><script>
+shell();const v=()=>{$('#app').innerHTML=isAdmin()?`<h1>${S('adm')}</h1><div class=grid>${PAGES.slice(1,7).map(([p,k])=>'<a class=card href='+p+'.html>'+S(k)+'</a>').join('')}</div><p><button id=o class=danger>${S('logout')}</button></p>`:`<h1>${S('login')}</h1><div class=card style="max-width:380px"><input id=p type=password placeholder="${S('pw')}"><p><button id=l>${S('login')}</button></p><p id=m class=bad></p></div>`;
+$('#o')&&($('#o').onclick=()=>{DB.set('admin',false);location.href='index.html'});$('#l')&&($('#l').onclick=()=>{if($('#p').value==ADMIN_PASS){DB.set('admin',true);location.reload()}else $('#m').textContent=S('wrong')})};v();
+</script></body></html>

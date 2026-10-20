@@ -1,0 +1,15 @@
+<!doctype html><html lang="uz"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><body><main id="app"></main><script src="app.js"></script><script>
+const pass=r=>r&&r.s/r.n>=.6,res=()=>DB.get('res',{});
+const vid=x=>{const l=x.yt||{},u=l[LG]||l.en||l.uz||l.ru||'',m=u.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?`<iframe src="https://www.youtube.com/embed/${m[1]}" allowfullscreen loading=lazy></iframe>`:`<p class=muted>${S('novid')}</p>`};
+const open=x=>{const qs=quiz(x);$('#app').innerHTML=`<a href=darslar.html>${S('back')}</a><h1>${e(tt(x.t))}</h1><p class=muted>${LV[x.lv][LI]} · ${x.no}</p>${vid(x)}<pre>${e(tt(x.body))}</pre><h2>${S('test')}</h2><form id=f>${qs.map((q,i)=>'<div class=q><b>'+e(q.q)+'</b>'+q.o.map((o,j)=>'<label><input type=radio name=q'+i+' value='+j+'>'+e(o)+'</label>').join('')+'</div>').join('')}<button>${S('res')}</button></form><div id=r></div>`;
+$('#f').onsubmit=ev=>{ev.preventDefault();let s=0;qs.forEach((q,i)=>{const c=$('input[name=q'+i+']:checked');if(c&&+c.value==q.a)s++});
+const r=res();r[x.id]={s,n:qs.length,d:new Date().toISOString().slice(0,10)};DB.set('res',r);const ok=s/qs.length>=.6;
+$('#r').innerHTML='<h2 class='+(ok?'ok':'bad')+'>'+s+' / '+qs.length+' — '+S(ok?'pass':'fail')+'</h2>'}};
+listPage({name:'lessons',title:S('lessons'),sub:U("Aviatsiyani noldan o'rganing: darslar daraja bo'yicha ketma-ket, video va testlar bilan. Keyingi dars uchun oldingi testni topshiring (60%).|Изучайте авиацию с нуля: уроки по уровням, с видео и тестами. Для следующего урока сдайте предыдущий тест (60%).|Learn aviation from scratch: lessons by level with video and tests. Pass the previous test (60%) to unlock the next lesson."),
+fields:[{k:'lv',l:'Level',o:LV.map((l,i)=>[i,l[LI]])},{k:'no',l:'No.'},{k:'t',l:'Title',i:1},{k:'body',l:'Lesson text',i:1,a:1},{k:'yt',l:'YouTube link',i:1},{k:'qs',l:'Test: Question#A#B#C#D#correct(1-4) per line',i:1,a:1}],
+sort:(a,b)=>a.lv-b.lv||a.no-b.no,
+card:x=>{const l=sorted(),i=l.findIndex(y=>y.id==x.id),r=res()[x.id],lk=!isAdmin()&&i>0&&!pass(res()[l[i-1].id]);
+return '<div class='+(lk?'lock':'')+'><h3>'+e(tt(x.t))+'</h3><span class=muted>'+LV[x.lv][LI]+' · '+x.no+'</span><p>'+(r?'<span class='+(pass(r)?'ok':'bad')+'>'+r.s+'/'+r.n+'</span>':S('notdone'))+'</p>'+(lk?'<span class=muted>'+S('lock')+'</span>':'<button data-o='+x.id+'>'+S('open')+'</button>')+'</div>'},
+click:(b,a)=>{if(b.dataset.o)open(a.find(x=>x.id==b.dataset.o))}});
+const h=+location.hash.slice(1);if(h){const x=col('lessons').find(x=>x.id==h);x&&open(x)}
+</script></body></html>

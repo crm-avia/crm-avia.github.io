@@ -1,0 +1,7 @@
+<!doctype html><html lang="uz"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><body><main id="app"></main><script src="app.js"></script><script>
+listPage({name:'aircraft',title:S('aircraft'),sub:U("Yo'lovchi va yuk samolyotlari, vertolyotlar hamda harbiy qiruvchilarning turlari: tarixi, ko'rinishi va texnik tavsifi Vikipediyadan olinadi.|Пассажирские и грузовые самолёты, вертолёты и истребители: история, внешний вид и характеристики из Википедии.|Airliners, cargo planes, helicopters and fighter jets: history, appearance and specs from Wikipedia."),
+fields:[{k:'t',l:'Wikipedia page title (English)'},{k:'c',l:'Category',o:Object.keys(CAT).map(k=>[k,CAT[k][LI]])}],
+card:x=>'<div data-w="'+e(x.t)+'"><h3>'+e(x.t)+'</h3><span class=muted>'+e((CAT[x.c]||[])[LI]||x.c)+'</span><p class=muted>…</p></div>',
+after:async box=>{for(const d of $$('[data-w]',box)){const j=await wiki(d.dataset.w,[...new Set([LG,'en'])]);if(!j){d.querySelector('p').textContent='—';continue}
+d.innerHTML=(j.thumbnail?'<img class=thumb src="'+e(j.thumbnail.source)+'" alt="">':'')+'<h3>'+e(j.title)+'</h3><span class=muted>'+e((CAT[col('aircraft').find(a=>a.t==d.dataset.w)?.c]||[])[LI]||'')+'</span><p>'+e(j.extract)+'</p>'}}})
+</script></body></html>

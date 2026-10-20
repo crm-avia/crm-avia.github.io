@@ -1,0 +1,5 @@
+<!doctype html><html lang="uz"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><body><main id="app"></main><script src="app.js"></script><script>
+listPage({name:'kokpit',title:U("Kokpit qo'llanmasi|Кабина пилота|Cockpit guide"),sub:U("Samolyot va vertolyot kokpitidagi asboblar va boshqaruv elementlari qanday ko'rinishda ekanini va qanday vazifa bajarishini rasmlar bilan o'rganing.|Узнайте, как выглядят приборы и органы управления в кабине самолёта и вертолёта и за что они отвечают.|See what instruments and controls look like in an airplane or helicopter cockpit, and what each one does."),
+fields:[{k:'t',l:'Name',i:1},{k:'m',l:'Function',i:1,a:1},{k:'c',l:'Type',o:[['Common','Common'],['Airplane','Airplane'],['Helicopter','Helicopter']]},{k:'w',l:'Wikipedia title (auto image)'},{k:'img',l:S('imgh'),g:1}],
+card:x=>'<img class=thumb alt="" '+(x.img?'src="'+e(x.img)+'"':'data-wi="'+e(x.w)+'"')+'><h3>'+e(tt(x.t))+'</h3><span class=muted>'+e(x.c)+'</span><p>'+e(tt(x.m))+'</p>',after:fillImgs})
+</script></body></html>
