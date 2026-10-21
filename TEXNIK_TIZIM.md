@@ -65,3 +65,5 @@ Production uchun tavsiya:
 - **Rasmlar:** bosh sahifa bo'limlari va kokpit qurilmalari uchun Vikipediya rasmi avtomatik olinadi; admin kokpitda o'z rasmini URL yoki fayl orqali qo'yishi mumkin (fayl 500 px gacha kichraytirilib saqlanadi).
 - **Darslar:** har til uchun alohida YouTube havolasi (`yt.uz / yt.ru / yt.en`).
 - **Olib tashlandi:** Ob-havo bo'limi. **Qo'shildi:** FAA, EASA, ICAO, IATA va boshqa qisqartmalar; kengaytirilgan radio aloqa; admin uchun "Chiqish".
+
+pilot academy kkkjkjkjks
