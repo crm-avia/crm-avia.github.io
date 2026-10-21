@@ -66,4 +66,3 @@ Production uchun tavsiya:
 - **Darslar:** har til uchun alohida YouTube havolasi (`yt.uz / yt.ru / yt.en`).
 - **Olib tashlandi:** Ob-havo bo'limi. **Qo'shildi:** FAA, EASA, ICAO, IATA va boshqa qisqartmalar; kengaytirilgan radio aloqa; admin uchun "Chiqish".
 
-pilot academy kkkjkjkjks
